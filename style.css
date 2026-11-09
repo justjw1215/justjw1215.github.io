@@ -23,7 +23,7 @@
   --radius: 16px;
 }
 
-/* 修复了通配符错误 * */
+/* Global Reset Rule */
 * {
   margin: 0;
   padding: 0;
@@ -184,6 +184,12 @@ p {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+/* Typing Cursor Effect */
+.typed-cursor {
+  color: var(--accent-blue);
+  font-weight: 300;
 }
 
 /* ---------- 4. HERO BUTTONS ---------- */
@@ -411,6 +417,9 @@ p {
 }
 
 .tag-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 6px 14px;
   color: var(--accent-blue);
   background: var(--accent-soft);
@@ -419,6 +428,10 @@ p {
   font-size: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
+}
+
+.tag-list span i {
+  font-size: 14px;
 }
 
 .tag-list span:hover {
@@ -448,7 +461,7 @@ p {
   text-decoration: underline;
 }
 
-/* ---------- 12. SELECTED WORK ---------- */
+/* ---------- 11. SELECTED WORK ---------- */
 .artifact-card {
   display: grid;
   grid-template-columns: 60px 1fr;
@@ -523,7 +536,7 @@ p {
   margin-bottom: 6px;
 }
 
-/* ---------- 13. DETAILS & GALLERY ---------- */
+/* ---------- 12. EVENT DETAILS ---------- */
 .talk-details {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -540,27 +553,88 @@ p {
   border-left: 3px solid var(--accent-blue);
 }
 
-.talk-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.talk-gallery img {
+/* ---------- 13. INTERACTIVE IMAGE SLIDER ---------- */
+.slider-container {
+  position: relative;
   width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
+  max-width: 760px;
+  height: 400px;
+  margin: 20px auto 0;
+  overflow: hidden;
+  border-radius: 14px;
   border: 1px solid var(--border);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  background: #0f172a;
 }
 
-.talk-gallery img:hover {
-  transform: scale(1.02);
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/* ---------- 15. REFLECTION ---------- */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: linear-gradient(transparent, rgba(15, 23, 42, 0.85));
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Slider Pagination Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 14px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 10px;
+}
+
+/* ---------- 14. REFLECTION ---------- */
 .reflection-example {
   padding: 40px;
   background: #ffffff;
@@ -582,7 +656,7 @@ p {
   line-height: 1.85;
 }
 
-/* ---------- 17. FOOTER ---------- */
+/* ---------- 15. FOOTER ---------- */
 .site-footer {
   display: flex;
   align-items: center;
@@ -625,7 +699,7 @@ p {
   color: #64748b;
 }
 
-/* ---------- 18. RESPONSIVE (MOBILE & TABLET) ---------- */
+/* ---------- 16. RESPONSIVE DESIGN (MOBILE & TABLET) ---------- */
 @media (max-width: 868px) {
   .hero {
     flex-direction: column-reverse;
@@ -645,97 +719,13 @@ p {
     grid-template-columns: 1fr;
   }
 
-   /* ---------- INDUSTRY TALK  ---------- */
-
-/* 1.  */
-.talk-carousel {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 420px;    
-  margin: 20px auto 0;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid var(--border, #e2e8f0);
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
-}
-
-/* 2. animation */
-.carousel-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  animation: carouselFade 8s infinite ease-in-out;
-}
-
-/* pic 1 */
-.carousel-slide:nth-child(1) {
-  animation-delay: 0s;
-}
-
-/*  4 sec pic2 */
-.carousel-slide:nth-child(2) {
-  animation-delay: 4s;
-}
-
-/* 3.  */
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: center;
-}
-
-.slide-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 14px 20px;
-  background: linear-gradient(transparent, rgba(15, 23, 42, 0.75));
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-/* 4. Keyframes  */
-@keyframes carouselFade {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  6% {
-    opacity: 1; 
-  }
-  45% {
-    opacity: 1; 
-    transform: scale(1.02); 
-  }
-  50% {
-    opacity: 0; 
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* phone */
-@media (max-width: 650px) {
-  .talk-carousel {
-    height: 260px; 
-  }
-}
-  .talk-details, .talk-gallery {
+  .talk-details {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .slider-container {
+    height: 260px;
   }
 }
