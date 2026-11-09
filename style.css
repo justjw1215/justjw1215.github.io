@@ -645,6 +645,96 @@ p {
     grid-template-columns: 1fr;
   }
 
+   /* ---------- INDUSTRY TALK  ---------- */
+
+/* 1.  */
+.talk-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 420px;    
+  margin: 20px auto 0;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border, #e2e8f0);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+}
+
+/* 2. animation */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: carouselFade 8s infinite ease-in-out;
+}
+
+/* pic 1 */
+.carousel-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+/*  4 sec pic2 */
+.carousel-slide:nth-child(2) {
+  animation-delay: 4s;
+}
+
+/* 3.  */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 20px;
+  background: linear-gradient(transparent, rgba(15, 23, 42, 0.75));
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Keyframes  */
+@keyframes carouselFade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  6% {
+    opacity: 1; 
+  }
+  45% {
+    opacity: 1; 
+    transform: scale(1.02); 
+  }
+  50% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* phone */
+@media (max-width: 650px) {
+  .talk-carousel {
+    height: 260px; 
+  }
+}
   .talk-details, .talk-gallery {
     grid-template-columns: 1fr;
   }
