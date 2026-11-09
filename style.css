@@ -25,6 +25,7 @@
 }
 
 /* Personal Photo in Home Hero */
+
 .hero-photo-wrap {
   position: relative;
   z-index: 2;
@@ -120,13 +121,12 @@
 }
 
 /* Mobile */
-@media(max-width: 600px) {
-  .hero-photo-wrap {
-    flex: none;
-    width: 170px;
-    height: 205px;
+
+@media (max-width: 600px) {
+
+  .brand img {
+    width: 100px;
   }
-}
 
   .hero {
     align-items: center;
@@ -136,8 +136,8 @@
 
   .hero-photo-wrap {
     flex: none;
-    width: 190px;
-    height: 230px;
+    width: 170px;
+    height: 205px;
   }
 
   .hero-copy {
